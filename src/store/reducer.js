@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_ITEM, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
+import { CHANGE_INPUT_ITEM, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION } from './actionTypes';
 
 const defaultState = {
     inputValue: '',
@@ -7,7 +7,6 @@ const defaultState = {
 
 // reducer只可接受state，不可以修改
 export default (state = defaultState, action) => {
-    console.log(state, action);
     if (action.type === CHANGE_INPUT_ITEM) {
         const newState = JSON.parse(JSON.stringify(state));
         newState.inputValue = action.value;
@@ -20,6 +19,10 @@ export default (state = defaultState, action) => {
     } else if (action.type === DELETE_TODO_ITEM) {
         const newState = JSON.parse(JSON.stringify(state));
         newState.list.splice(action.index, 1);
+        return newState;
+    } else if (action.type === INIT_LIST_ACTION) {
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.list = action.data;
         return newState;
     }
     return state;
