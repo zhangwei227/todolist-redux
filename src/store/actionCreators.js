@@ -1,5 +1,5 @@
-import { ADD_TODO_ITEM, CHANGE_INPUT_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION } from './actionTypes';
-import axios from 'axios';
+import { ADD_TODO_ITEM, CHANGE_INPUT_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION, GET_INIT_LIST } from './actionTypes';
+// import axios from 'axios';
 
 export const getInputChangeAction = (value) => (
     {
@@ -20,12 +20,16 @@ export const initListAction = (data) => ({
     data
 })
 
-export const getTodoList = () => {
-    return (dispatch) => {
-        axios.get('list.json').then((res) => {
-            const data = res.data;
-            const action = initListAction(data);
-            dispatch(action);
-        });
-    }
-}
+// export const getTodoList = () => {
+//     return (dispatch) => {
+//         axios.get('list.json').then((res) => {
+//             const data = res.data;
+//             const action = initListAction(data);
+//             dispatch(action);
+//         });
+//     }
+// }
+
+export const getInitList = () => ({
+    type: GET_INIT_LIST
+})
